@@ -10,8 +10,8 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
-      "hash": "sha256:e9c75333cf4eb4fa732ac10541e5bd5a8f085fab8a85cd30c9c25f6220ab86a3",
-      "bytes": 1080573,
+      "hash": "sha256:a1d421f0691b222ff19d0095dfc7716f852d10813b9deae8861747e909d6090b",
+      "bytes": 1080586,
       "fields": 22,
       "rows": 4532,
       "dialect": {
@@ -27,7 +27,8 @@
             "title": "Ano Empenho",
             "description": "Ano de registro do documento de empenho, registrado no sistema estruturado SIAFI.\n",
             "constraints": {
-              "pattern": "^[1-9]\\d{3}$"
+              "required": true,
+              "pattern": "^[1-2]\\d{3}$"
             }
           },
           {
@@ -230,5 +231,5 @@
     }
   ],
   "owner_org": "secretaria-de-estado-de-planejamento-e-gestao-seplag",
-  "updated_at": "2026-10-09T06:54:10"
+  "updated_at": "2026-10-09T17:10:56"
 }
