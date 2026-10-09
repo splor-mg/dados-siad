@@ -1,0 +1,234 @@
+{
+  "name": "dados_siad",
+  "title": "Execução Portal de Compras - SIAD",
+  "resources": [
+    {
+      "name": "execucao_siad",
+      "type": "table",
+      "path": "data/execucao_siad.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha256:e9c75333cf4eb4fa732ac10541e5bd5a8f085fab8a85cd30c9c25f6220ab86a3",
+      "bytes": 1080573,
+      "fields": 22,
+      "rows": 4532,
+      "dialect": {
+        "csv": {
+          "delimiter": ","
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "ano_empenho",
+            "type": "string",
+            "title": "Ano Empenho",
+            "description": "Ano de registro do documento de empenho, registrado no sistema estruturado SIAFI.\n",
+            "constraints": {
+              "pattern": "^[1-9]\\d{3}$"
+            }
+          },
+          {
+            "name": "uo_cod",
+            "type": "string",
+            "title": "Unidade Orçamentária - Código",
+            "description": "Código representativo da unidade orçamentária.\n",
+            "constraints": {
+              "required": true,
+              "pattern": "^[1-9]\\d{3}$"
+            }
+          },
+          {
+            "name": "acao_cod",
+            "type": "string",
+            "title": "Ação - Código",
+            "description": "Código identificador do conjunto de operações, limitadas no tempo (projeto) ou realizadas de modo contínuo e permanente (atividade)\ndos quais resulta um produto final (projeto) ou necessárias à manutenção da ação governamental (atividade).\n",
+            "missingValues": [
+              "0",
+              ""
+            ],
+            "constraints": {
+              "pattern": "^[1-9]\\d{3}$"
+            }
+          },
+          {
+            "name": "grupo_cod",
+            "type": "string",
+            "title": "Grupo Despesa - Código",
+            "description": "Código do grupo de natureza econômica da despesa.\nConsiste na agregação de elementos de despesa que apresentam as mesmas características quanto ao objeto do gasto.\nA Portaria Interministerial STN/SOF n.o 163/01 definiu como grupos de despesa: (1) pessoal e encargos sociais, (2) juros e encargos da dívida, (3) outras despesas correntes, (4) investimentos, (5) inversões financeiras e (6) amortização da dívida.\n",
+            "constraints": {
+              "pattern": "^([1-6]|9)$"
+            }
+          },
+          {
+            "name": "iag_cod",
+            "type": "string",
+            "title": "Identificador Orçamento - Código",
+            "description": "Código do identificador do orçamento conforme o SIAFI-MG.\n",
+            "constraints": {
+              "pattern": "^[0-6]$"
+            }
+          },
+          {
+            "name": "fonte_cod",
+            "type": "string",
+            "title": "Fonte Recurso - Código",
+            "description": "Código referente à fonte dos recursos financeiros.\nIdentifica a origem e natureza dos recursos orçamentários através de código e é utilizada para indicar que espécies de recursos irão financiar as despesas.\n",
+            "constraints": {
+              "required": true,
+              "pattern": "^(0|[1-9]\\d{0,1})$"
+            }
+          },
+          {
+            "name": "ipu_cod",
+            "type": "string",
+            "title": "Procedência - Código",
+            "description": "Código identificador da procedência dos recursos.\nIdentifica a origem e a utilização dos recursos.\nO identificador de procedência e uso (IPU) informa, dentre outros, se os recursos serão para livre utilização, se foram transferidos de outra unidade orçamentária, se objetivam oferecer contrapartida a convênios, acordos e ajustes, se voltam para o financiamento de inativos do FFP ou ainda se referem-se aos investimentos do Propag.\n",
+            "constraints": {
+              "pattern": "^\\d{1}$"
+            }
+          },
+          {
+            "name": "elemento_item_cod",
+            "type": "string",
+            "title": "Elemento Item Despesa Origem - Código",
+            "description": "Código identificador do elemento item de gasto da despesa.\n",
+            "missingValues": [
+              "0",
+              ""
+            ],
+            "constraints": {
+              "pattern": "^[1-9]\\d{0,3}$"
+            }
+          },
+          {
+            "name": "tipo_material_servico",
+            "type": "string",
+            "title": "Tipo Material/Serviço",
+            "description": "Especificação se um item se refera a um material ou a um serviço.\n",
+            "constraints": {
+              "maxLength": 500
+            }
+          },
+          {
+            "name": "item_material_servico_cod",
+            "type": "string",
+            "title": "Código Item Material/Serviço - Numérico",
+            "description": "Código numérico do item de material/serviço no Catálogo de Materiais e Serviçoes do Siad.\n",
+            "constraints": {
+              "maxLength": 10
+            }
+          },
+          {
+            "name": "item_material_servico_desc",
+            "type": "string",
+            "title": "Item Material/Serviço",
+            "description": "Especificação do item de material/serviço.\n",
+            "constraints": {
+              "maxLength": 500
+            }
+          },
+          {
+            "name": "quantidade_empenhada",
+            "type": "number",
+            "title": "Qtde Despesa Empenhada",
+            "description": "Quantidade despesa empenhada do item de materail/serviço, calculada a partir de:\nQtde empenho + Qtde reforço empenho - Qtde anulação empenho - Qtde anulação despesa orçamentária - Qtde cancelamento restos a pagar + Qtde reestabelecimento restos a pagar.\nAtenção: Valores igua a zero no caso de serviço com controle por valor.\nValores negativos poderão ser exibidos dependendo do detalhamento da consulta.\n"
+          },
+          {
+            "name": "vlr_empenhado",
+            "type": "number",
+            "title": "Valor Despesa Empenhada",
+            "description": "Valor líquido, em reais, da despesa empenhada.\n"
+          },
+          {
+            "name": "quantidade_liquidada",
+            "type": "number",
+            "title": "Qtde Despesa Liquidada",
+            "description": "Quantidade despesa empenhada do item de materail/serviço, calculada a partir de:\nQtde conformidade orçamentaria + Qtde conformidade restos a pagar - Qtde anulação conformidade orçamentária - Qtde anulação conformidade restos a pagar - Qtde anulação despesa orçamentária - Qtde anulação despesa restos a pagar.\nAtenção: Valores igua a zero no caso de serviço com controle por valor.\nValores negativos poderão ser exibidos dependendo do detalhamento da consulta.\n"
+          },
+          {
+            "name": "vlr_liquidado",
+            "type": "number",
+            "title": "Valor Despesa Liquidada",
+            "description": "Valor total da despesa liquidada, em reais.\n"
+          },
+          {
+            "name": "num_contrato",
+            "type": "string",
+            "title": "Número Contrato",
+            "description": "Número de registro do contrato.\n",
+            "constraints": {
+              "pattern": "^\\d+$"
+            }
+          },
+          {
+            "name": "tipo_contrato_desc",
+            "type": "string",
+            "title": "Descrição Tipo Contrato",
+            "description": "Descrição do tipo de contrato.\n",
+            "constraints": {
+              "maxLength": 500
+            }
+          },
+          {
+            "name": "indicador_execucao_continuada",
+            "type": "string",
+            "title": "Indicador Execução Continuada",
+            "description": "Indica se a execução é continuada:SIM.\n",
+            "constraints": {
+              "maxLength": 10
+            }
+          },
+          {
+            "name": "cod_item_formatado",
+            "type": "string",
+            "title": "Código Item Material/Serviço - Formatado",
+            "description": ".\n",
+            "constraints": {
+              "pattern": "^\\d{8}-\\d$"
+            }
+          },
+          {
+            "name": "cnpj_cpf_formatado",
+            "type": "string",
+            "title": "CNPJ/CPF Credor - Formatado",
+            "description": "Código formatado do CNPJ ou CPF do credor.\n",
+            "missingValues": [
+              "99999999999999"
+            ],
+            "constraints": {
+              "pattern": "^(\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}|\\d{3}\\.\\d{3}\\.\\d{3}[/-]\\d{2}|CPF:[0-9a-f]{32})$"
+            },
+            "anonymize": {
+              "method": "aes_siv",
+              "annotation": "CPF:11",
+              "filter": "len([c for c in cnpj_cpf_formatado if c.isdigit()]) == 11"
+            }
+          },
+          {
+            "name": "material_servico_desc",
+            "type": "string",
+            "title": "Material/Serviço",
+            "description": "Descrição do material ou serviço.\n",
+            "constraints": {
+              "maxLength": 500
+            }
+          },
+          {
+            "name": "material_servico_cod",
+            "type": "string",
+            "title": "Código Material/Serviço - Formatado",
+            "description": ".\n",
+            "constraints": {
+              "pattern": "^\\d{4}\\.\\d{3}-\\d$"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "owner_org": "secretaria-de-estado-de-planejamento-e-gestao-seplag",
+  "updated_at": "2026-10-09T06:54:10"
+}
