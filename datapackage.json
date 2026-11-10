@@ -10,10 +10,10 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
-      "hash": "sha256:338eb250f6d09d751cb10a154e833081c6a650802733f43f7d285ff856e6638c",
-      "bytes": 1122168,
+      "hash": "sha256:b559f72b8947be96510763128cabe995d4e26fdcf8492424dbac97056e335737",
+      "bytes": 1127831,
       "fields": 22,
-      "rows": 4692,
+      "rows": 4713,
       "dialect": {
         "csv": {
           "delimiter": ","
@@ -60,7 +60,7 @@
             "title": "Grupo Despesa - Código",
             "description": "Código do grupo de natureza econômica da despesa.\nConsiste na agregação de elementos de despesa que apresentam as mesmas características quanto ao objeto do gasto.\nA Portaria Interministerial STN/SOF n.o 163/01 definiu como grupos de despesa: (1) pessoal e encargos sociais, (2) juros e encargos da dívida, (3) outras despesas correntes, (4) investimentos, (5) inversões financeiras e (6) amortização da dívida.\n",
             "constraints": {
-              "pattern": "^([1-6]|9)$"
+              "pattern": "^([0-6]|9)$"
             }
           },
           {
@@ -69,7 +69,7 @@
             "title": "Identificador Orçamento - Código",
             "description": "Código do identificador do orçamento conforme o SIAFI-MG.\n",
             "constraints": {
-              "pattern": "^[0-6]$"
+              "pattern": "^[0-7]$"
             }
           },
           {
@@ -197,15 +197,11 @@
             "title": "CNPJ/CPF Credor - Formatado",
             "description": "Código formatado do CNPJ ou CPF do credor.\n",
             "missingValues": [
+              "0",
               "99999999999999"
             ],
             "constraints": {
               "pattern": "^(\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}|\\d{3}\\.\\d{3}\\.\\d{3}[/-]\\d{2}|CPF:[0-9a-f]{32})$"
-            },
-            "anonymize": {
-              "method": "aes_siv",
-              "annotation": "CPF:11",
-              "filter": "len([c for c in cnpj_cpf_formatado if c.isdigit()]) == 11"
             }
           },
           {
@@ -231,5 +227,5 @@
     }
   ],
   "owner_org": "secretaria-de-estado-de-planejamento-e-gestao-seplag",
-  "updated_at": "2026-11-09T20:38:09"
+  "updated_at": "2026-11-10T10:06:47"
 }
